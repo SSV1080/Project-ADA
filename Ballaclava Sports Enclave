@@ -1,0 +1,778 @@
+import random
+import time
+import pygame
+import pygame.display
+import pygame.mixer
+import csv
+pygame.mixer.init()
+pygame.init()
+pygame.display.init()
+
+#Background Music
+#snd_dir = path.join(path.dirname(__file__),'sound')
+#Dont use mp3 files, use only wav
+gorbachev = "Cool_Piano.mp3"    #Great
+ginyu = "Tokusentai.mp3"    #Beyond superfabulous
+Dmus = "DD.mp3"     #decent
+########################################################
+tris = "ori.wav"            #Very Good
+castle = "cdop.wav"         #Very good
+peacock = "PKick.wav"       #Very good  CLink
+Vidal = "Astronomia.wav"    #VG         CLink
+frooti = "WIL.wav"          #VG         CLink
+battle = "bigboy.mpeg"      #VG         SOTC
+halom = "halom.mp3"         #VG         LjB0
+mariom = "mariom.mp3"       #VG         LjB0
+pygame.mixer.music.load(Vidal)
+pygame.mixer.music.set_volume(0.9)
+pygame.mixer.music.play(-1)
+#tempah = pygame.mixer.Sound("something.wav")    #Random Sound
+
+#Other Sounds
+#zuwald = pygame.mixer.Sound("DD.mp3")
+od = pygame.mixer.Sound("Door.wav")
+######################################################
+   
+
+print("                                       Text-Based Choose Your Own Adventure Game                      ")
+
+#Calibrating User Response
+answer_A = ["A", "a"]
+answer_B = ["B", "b"]
+answer_C = ["C", "c"]
+answer_D = ["D", "d"]
+answer_E = ["E", "e"]
+answer_F = ["F", "f"]
+yes = ["Y", "y", "yes"]
+no = ["N", "n", "no"]
+
+#Calibrating a few variables
+intRoll = 0
+strRoll = 0
+agiRoll = 0
+chaRoll = 0
+endRoll = 0
+
+#Choice Variables 
+mcnugget = 0    #Chap 2
+hat = 0         #Chap 2
+
+
+###################
+name=0
+namarr = []
+
+ints = 0
+intar = []
+
+stren = 0
+strar = []
+
+agi = 0
+agiar = []
+
+cha = 0
+chaar = []
+
+end = 0
+endar = []
+
+with open('yugz.csv') as file:
+          reader = csv.reader(file)
+          count = 0
+
+          for row in reader:
+            # print(row[0])    #make it row[x] for specific rows
+              name = row[0]
+              namarr.append(name)
+
+              ints = row[1]
+              intar.append(ints)
+
+              stren = row[2]
+              strar.append(stren)
+
+              agi = row[3]
+              agiar.append(agi)
+
+              cha = row[4]
+              chaar.append(cha)
+
+              end = row[5]
+              endar.append(end)
+              
+              if(count>5):
+                  break
+                
+joseph = int(random.randint(1,5))
+b1name = namarr[joseph]
+b1int = intar[joseph]
+b1str = strar[joseph]
+b1agi = agiar[joseph]
+b1char = chaar[joseph]
+b1end = endar[joseph]
+###########################################################
+
+#time.sleep(1)
+
+print(b1name)
+print("                    Statistic Generator             ")
+time.sleep(1)
+print("\n We shall now set the stat points for the game. These points "
+      " are going to determine the actions that a player can physically "
+      "achieve. We would suggest taking actions based on the structure "
+      "of your stat build (i.e try to make actions which rely on stats "
+      " which you have an abundance in). These points shall be set randomly, "
+      "but the player can have an option in a specific bonus in a particular"
+      " set of stats.")
+
+required = ("\n Please Use only the provided options \n")
+
+#print("\n Select your race : "
+ #     "1. Human (+1 across the board) \n"
+  #    "2. Elf (+2 intellect,+2 agility, +1 endurance) \n")
+#race =
+
+
+print("\n Select your class from the following : \n"
+      "1. Adventurer (+1 All) \n"
+      "2. Legionnaire (+4 Strength, +1 Endurance) \n"
+      "3. Ranger (+3 Agility, +2 Strength) \n"
+      "4. Doctor (+5 intellect) \n"
+      "5. Bard (+4 Charisma, +1 Agility) \n"
+      "6. Alchemist (+3 Intelligence, +2 Endurance) \n"
+      "7. Danny Devito (Content unlocks after finishing the game once)  \n")
+classer = int(input("Enter your choice >>>"))
+
+if(classer ==1):
+    intRoll = int(random.randint(3,3))
+    strRoll = int(random.randint(3,3))
+    agiRoll = int(random.randint(3,3))
+    chaRoll = int(random.randint(3,3))
+    endRoll = int(random.randint(3,3))
+
+elif (classer == 2):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(3,4))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(3,4))
+
+elif (classer == 3):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(2,3))
+    agiRoll = int(random.randint(4,6))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(1,2))
+
+elif (classer == 4):
+    intRoll = int(random.randint(3,4))
+    strRoll = int(random.randint(1,2))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(1,2))
+
+elif(classer == 5):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(1,2))
+    agiRoll = int(random.randint(2,3))
+    chaRoll = int(random.randint(4,6))
+    endRoll = int(random.randint(1,2))
+
+elif (classer == 6):
+    intRoll = int(random.randint(3,4))
+    strRoll = int(random.randint(1,2))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(2,3))
+
+elif (classer == 7):
+    intRoll = int(random.randint(69,69))
+    strRoll = int(random.randint(69,69))
+    agiRoll = int(random.randint(69,69))
+    chaRoll = int(random.randint(69,69))
+    endRoll = int(random.randint(69,69))
+       
+   
+
+        ####################################
+if(classer ==1):
+    strRoll = strRoll + 1
+    agiRoll = agiRoll + 1
+    endRoll = endRoll + 1
+    intRoll = intRoll + 1
+    chaRoll = chaRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 2):
+    strRoll = strRoll + 4
+    endRoll = endRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+   
+
+elif(classer == 3):
+    agiRoll = agiRoll + 3
+    strRoll = strRoll + 2
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 4):
+    intRoll = intRoll + 5
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 5):
+    charRoll = chaRoll + 4
+    agiRoll = agiRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 6):
+    intRoll = intRoll + 3
+    endRoll = endRoll + 3
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+#elif(classer == 7):
+    #print("\n The heavens have parted and a being of epic power has descended downward to grace Mankind with his glorius visage")
+    #print("\n The stat points for the Lord and Saviour are : ")
+    #print(" Strength : ", strRoll)
+    #print(" Agility : ", agiRoll)
+    #print(" Endurance : ",endRoll)
+    #print(" Charisma : ", chaRoll)
+    #print(" Intellect : ",intRoll)
+
+else:
+    print(required)
+    stat_gen()
+
+
+
+print("\n Now that we've set the statistic points, let's proceed with the story \n")
+
+def print_Stat():
+    print("\n You take a good look at yourself,realising that your stat build is : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+    print("\n")
+
+############################################
+def intro():
+
+  pygame.mixer.music.stop()
+  pygame.mixer.music.load(castle)
+  pygame.mixer.music.play(-1)
+  
+  print ("\n You wake up in a damp room, the air so thick that you "
+         "can tangibly feel it on your tongue. You get out of bed "
+         "groggily but suddenly feel the urge to vomit. You lurch "
+         "toward the thing that looks like a bucket and give in to "
+         "your nausea."
+         "'Where am I? What am I doing here?'"
+         "you mutter to yourself as you scan your little room for "
+         "any idea regarding your whereabouts. Interestingly enough, "
+         "the walls of your hove don't look like a normal flat; "
+         "they're completely uneven. Terrified, you come to the understanding that "
+         "you're in a God-forsaken cave. As you glance upwards, you "
+         "notice a chandelier that's holding a couple of high-voltage electric bulbs. "
+         "That is the only source of light in your little coven "
+         "but it seems more than enough to illuminate the entire "
+         "region. Finally, your attention falls towards what seems "
+         "to be your exit. Excited, you haul yourself up and walk "
+         "toward it only to observe a barred door standing steadfast "
+         "in front of your path. The tremendously strong structure has a keyhole smack dab in the middle of its rusty exterior. "
+         "As your shoulders slump in despair, you "
+         "see a little envelope with a bright red seal on the floor near the door. Sighing, you try "
+         "to break the seal but you find that you cannot. You realize that "
+         "you need to reach the contents of the letter but can't risk damaging"
+         "the letter, what do you do next? dev note: Add room pics here \n")
+  time.sleep(1)
+  pygame.display.set_caption=("Text-Based Game")
+  screen=pygame.display.set_mode((1000,1000))
+
+  font=pygame.font.SysFont("Bold",36)
+  text=font.render("Dungeon Adventure", True, (255,255,255))
+
+  Gaem=pygame.font.SysFont("Italic",72)
+  text1=font.render("We shall now set the stat points for the game. These points", True, (255,255,0))
+  text2=font.render(" are going to determine the actions that a player can physically ", True, (255,255,0))
+  text3=font.render("achieve. We would suggest taking actions based on the structure ", True, (255,255,0))
+  text4=font.render("of your stat build (i.e try to make actions which rely on stats ", True, (255,255,0))
+  text5=font.render(" which you have an abundance in). These points shall be set randomly,", True, (255,255,0))
+  text6=font.render("but the player can have an option in a specific bonus in a particular"
+                      " set of stats.", True, (255,255,0))
+  screen.blit(text, (500,0))
+  screen.blit(text1, (0,50))
+  screen.blit(text2, (0,80))
+  screen.blit(text3, (0,110))
+  screen.blit(text4, (0,140))
+  screen.blit(text5, (0,170))
+  screen.blit(text6, (0,200))
+
+  image=pygame.image.load(r'C:\Users\Ashwin\Desktop\La Image Martain\cave.jpg')
+  screen.blit(image, (150,230))
+  pygame.display.update()
+ 
+  print ("""  A. Search for a means to solve your little conundrum
+  B. Wait for someone to come and rescue you
+  C. Shout for help with everything you've got
+  D. Have a look at your stat build
+  E. Have another look at that hulking iron door""")
+  choice = input(">>> ") #First choice.
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Sleeze()
+  elif choice in answer_C:
+    option_Starscream()
+  elif choice in answer_D:
+      print_Stat()
+      intro()
+  elif choice in answer_E:
+    option_sinistro()
+  else:
+      print (required)
+      intro()
+ 
+   
+def option_Pencil():
+  print ("\n You start searching for helpful things that could help you out of your sorry situation. "
+         "After an extensive search of your surroundings, you find a set of matches, a little lamp  "
+         "some dental floss in your little room. "
+         "What would you like to do next? \n")
+  time.sleep(1)
+  print ("""  A. Try to tamper with the seal to access the contents of the envelope
+  B. Bang on the door for help """)
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_bernie()
+
+  elif choice in answer_B:
+    option_Starscream()
+
+  else:
+    print(required)
+    option_Pencil()
+   
+
+def option_Sleeze():
+  print("\n Achievement unlocked: Thou art a couch potato. Even in this hostile environment, you can only think of sleep. Can totally relate, dude. "
+        "Now get a move on with the story, yeah? That's why I made the gaem. Developer out. \n")
+ 
+  print("\n You are tired. There is a bed near you. Isn't it obvious what you should do? Let's take a little nap and think "
+        "about your stressful situation later. You try to sleep, but you just can't. A little message pops into your head "
+        " ||You can't sleep now, there are monsters nearby|| Wising up, you realize you have a Minecraft addiction and ponder your next move. \n")
+  time.sleep(1)
+
+  print (""" A. Try to search for a way to bust your self out or maybe open that envelope you found
+ B. Bang at the door and shout, trying to get someones attention
+ C. Don't press C, Just DONT okay, I'm too lazy to rearrange the options
+ D. Inspect the door to see if you can break through
+ E. Check your stats """)
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Starscream()
+  elif choice in answer_C:
+    option_Sleeze()
+  elif choice in answer_D:
+      option_sinistro()
+  elif choice in answer_E:
+    print_Stat()
+    option_Sleeze()
+  else:
+      print (required)
+      option_Sleeze()
+
+def option_Starscream():
+  print("\n You bang on the door with everything you've got, shouting for help in all the languages you know (Which is just English btw) "
+        " You can only hear the deafening sound of silence, as well as your insecurities, screaming at you for wearing your worst pair of pants you own. "
+        " What will your next move be ?: \n")
+  time.sleep(1)
+
+  print (""" A. Try to search for a way to bust your self out or maybe open that envelope you found
+ B. Continue to  try to get someone's attention from the outside by causing a racket
+ C. Lie on your bed in defeat, maybe someone will come and collect you later
+ D. Check your stats
+ E. Let's have a look at that big door, yeah? Maybe we can find something useful""")
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Secondscream()
+  elif choice in answer_C:
+    option_Sleeze()
+  elif choice in answer_D:
+      print_Stat()
+      option_Starscream()
+  elif choice in answer_E:
+      option_sinistro()
+  else:
+      print (required)
+      option_Starscream()
+
+def option_sinistro():
+
+    print("\n As you observe the door, you realise that rather that it has an ornate lock with a golden keyhole on one of the sides. You probably need a key to "
+          "escape this room and embrace the warm sunlight of the outside world. Unless ... \n")
+    time.sleep(1)
+
+    print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+  B. If you can't move around a wall, you've gotta push through it : Let's break the lock
+  C. Punching the lock into a battered shape sounds like a stressful idea. Maybe we can try to pick it instead
+  D. Check your stat build""")
+    choice = input(">>> ")
+    if choice in answer_A:
+        option_Pencil()
+    elif choice in answer_B:
+        option_breaker()
+    elif choice in answer_C:
+        option_smooth()
+    elif choice in answer_D:
+        print_Stat()
+        option_sinistro()
+
+def option_breaker():
+    print("Stat Check : Strength(6)")
+    time.sleep(1)
+
+    if(strRoll>=6):
+        print("\n You throw a couple of punches at the lock and are pleasantly surprised to see some leeway for your efforts. You take a deep breath before you pound at "
+              "your metallic gatekeeper, which slowly starts to give until eventually the contraption keeping you prisoner breaks, allowing you to access the surrounding "
+              "areas. At this point, you are sweating profusely, and have blisters on your hands. You step out of your cell and brace yourself for whatever's coming next. \n")
+        option_remy()
+
+    else:
+        print("\n You valiantly try to break the lock by punching, kicking and swearing at it. Your efforts are unrewarded; the lock stands firm. In despair, you throw your "
+              " bucket at it, but you might as well be trying to fill water in a sieve or insert some other corny idiom here. ")
+
+        print("\n After that disastrous attempt failed you decide that there's no point trying to continue in this direction anymore and you think on your next course of action: ")
+       
+        print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+       B. You could always cry for help
+       C. Maybe you can try to pick this lock instead
+       D. Check your stat build""")
+        choice = input(">>> ")
+        if choice in answer_A:
+            option_Pencil()
+        elif choice in answer_B:
+            option_Starscream()
+        elif choice in answer_C:
+            option_smooth()
+        elif choice in answer_D:
+            print_Stat()
+            option_breaker()
+
+def option_smooth():
+    print("Stat Check: Intellect(6)")
+    if(intRoll>=6):
+        print("\n You remember seeing a thin screw jutting out from one of the legs of the bed. You squat down on your knees take a good look at it. It is long and has a flat tip, "
+              "and seems rather out of place in the whole structure of the bed. You take a deep breath and tug at it, bracing yourself for the collapse of the whole structure but miraculously"
+              " the bed remains standing even after you've taken the screws out from one of its legs. Your idiot brain then reminds you that three other legs are keeping this "
+              "thing from collapsing on its own weight. Sighing, you approach the door.")
+
+        print("\n The flat tip of the nail smoothly slides into the lock's orifice, very much unlike how you slide into girls' DMs. You then make lockpicking actions (Dev Note: I do not know how "
+              "to write this, this is kinda ssv's domain) and the lock makes a satisfying 'click' noise before you drop it onto the floor. You then push the door open and prepare yourself"
+              " for whatever's coming next. ")
+        option_remy()
+
+    else:
+        print("\n You scramble to find something to pick the lock with, but everything you find seems rather unsuitable for the task. You find a screw jutting out from underneath one of "
+              "The bed's legs that you could use, but spoiler alert: You can't; You're too dumb lol. You try to figure out what to do next. ")
+        print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+       B. You could always cry for help
+       C. Maybe you can try to bash the living shit out of this mother flipping lock
+       D. Check your stat build""")
+        choice = input(">>> ")
+        if choice in answer_A:
+            option_Pencil()
+        elif choice in answer_B:
+            option_Starscream()
+        elif choice in answer_C:
+            option_breaker()
+        elif choice in answer_D:
+            print_Stat()
+            option_smooth()
+
+def option_bernie():
+
+    print("\n You realize that you can try and remove the seal in two ways: You can burn until the wax drips off "
+          "or you could use the string to slowly cut the seal from the paper. You could always just kill time by "
+          "humming the Witcher theme but something tells you that probably isn't productive. That same thing is also "
+          "tells you that you are a moron of extraordinary proportions. It appears that you have some sense of rational thought"
+          " in that big pink blob between your ears. In any case, you gotta make a decision, chief. ")
+    time.sleep(1)
+
+    print ("""  A. Try to burn the seal to make the wax drip
+   B. Try to cut the seal from the envelope
+   C. Take a look at the door instead: Perhaps there are other ways to break out of here
+   D. Take a look at your stats""")
+    choice = input(">>> ")
+
+    if choice in answer_A:
+      option_goulding()
+ 
+    elif choice in answer_B:
+      option_kusanagi()
+
+    elif choice in answer_C:
+      option_sinistro()
+
+    elif choice in answer_D:
+        print_Stat()
+        option_bernie()
+
+    else:
+      print(required)
+      option_bernie()
+
+def option_Secondscream():
+
+    print("\n You persevere and continue to bang on the door, hoping that someone out there can hear your pleas for help and come and rescue"
+          " your sorry ass. But your efforts seem to fall on deaf ears {Much like all your requests for a lightsaber :( }. You realize that "
+          " you have to try a different approach. ")
+
+    print ("""A. Try to search for a way to bust your self out or maybe open that envelope you found
+   B. Do not select B plz
+   C. Lie on your bed in defeat,maybe someone will come and collect you later
+   D. Check your stats
+   E. Let's have a look at that big door, yeah? Maybe we can find something useful""")
+    choice = input(">>> ")
+    if choice in answer_A:
+      option_Pencil()
+    elif choice in answer_B:
+      option_Secondscream()
+    elif choice in answer_C:
+      option_Sleeze()
+    elif choice in answer_D:
+        print_Stat()
+        option_Secondscream()
+    elif choice in answer_E:
+        option_sinistro()
+    else:
+        print (required)
+        option_Secondscream()
+
+def option_goulding():
+
+ 
+  print("\n You light a match and light the lamp you found. After doing that, you gently put the seal of the envelope under the "
+        " the flame of the lamp. Because you are an utter klutz, the entire envelope catches fire and before you knew it, you "
+        " dropped the envelope and the fire slowly dies down after consuming the letter inside the envelope in its entirety. "
+        " As you wail in despair, you can see a glint coming from the ashes. You quickly try to reach the shiny object, only for the "
+        "hot ash to sting your hands as you try to touch your only hope. You learn from your mistake and blow at the ash, revealing a "
+        "well-adorned but slightly singed key. You shout with joy and plug the keyhole with the key you found and can now march your merry way into"
+        " freedom, or what I, the developer call the rest of your extremely large prison. ")
+  #global obj
+  #obj = 0
+
+  #print("Path 1 Selected")
+  option_remy()
+
+def option_kusanagi():
+
+  od.play()
+  print("\n You slowly cut your way through the seal, unceremoniously throwing it aside after you free the envelope from it's *EVIL* clutches "
+        "You uncover a piece of paper and a beautiful key. You attempt to read what's on the paper but it seems it was written in a language you can't understand. "
+        " As 'We are the champions' by a certain Freddy M plays in your head after your relatively easy accomplishment, you make your way to the door, "
+        " which you unlock not before murmuring 'No time for losers', you make your way to what you guess is the outside world. ")
+
+  #global obj
+  #obj = 1
+ 
+  #print("Path 2 selected")
+  option_remy()
+
+####################
+
+
+###########################################################################
+
+def option_remy():
+
+    global strRoll
+    global agiRoll
+    global b1name
+    global mcnugget
+    global hat
+    
+    print("\n End of chapter 1; Start of chapter 2")
+
+    print("\n As you move past the cranky iron stooge, you detect the presence of several weapons on a holster towards your left side. "
+              "Curious, you take a peek at contents, discovering a broadsword, a dagger and a crossbow with a few bolts. Not the finest quality that money can buy,"
+              "But I wouldn't call them terrible either. They are as your average, run of the mill, moderate, ordinary weapons of war. Nothing too extraordinary here, "
+              "other than the fact there are fucking medival weapons on the fucking wall. Might as well pick up one I suppose, although I doubt anyone who sees you holding a deadly object"
+              " with a pointy end facing toward them is going to think you're very friendly. ")
+
+    print ("""    A. Pick up the broadswoard
+   B. Grab the dagger
+   C. Acquire the crossbow
+   D. Check stats
+   E. The only weapons you need are your bare hands""")
+    weapon = input(">>> ")
+
+    if weapon in answer_A:
+      print("\n You feel a sense of security as you lift the saber, drawing it from its sheathe in a swift motion before jabbing the air until you feel satisfied. "
+            "Having pacified your invisible foe, you continue to explore the rest of the corridor. ")
+      strRoll +=1
+ 
+    elif weapon in answer_B:
+      print("\n The dagger feels just about right in your hands, and you discover that it's blade can retract back into the sheathe of the weapon. A simple switch "
+            "on the grip allows you to toggle your deadly toy between a weapon and a harmless scrap of metal. ")
+      agiRoll = agiRoll+1
+
+    elif weapon in answer_C:
+      print("\n Your attention is drawn to the crossbow. As you lift it, you can see the designations for where the bolt is supposed to rest and how the bow must be "
+            "strung. You string a bolt and procced cautiously through the stone corridor. ")
+      agiRoll +=1
+
+    elif weapon in answer_D:
+         print_Stat()
+
+    elif weapon in answer_E:
+        print("\n You scoff at these mere trinkets, having decided that you are better off without them. It appears "
+              "that you are either a legend or a moron and only time will reveal which one you truly are. Either way, you decide to leave the weapons behind and press on.")
+        
+    else:
+      print(required)
+      option_remy()
+
+    print("\n As you make your way down the hallway, you can see a humanoid figure squatting on a polished marble stairway; their physical appearance can only be described as hideous. "
+          "It growls at you in a grutural manner, and you take a step back in apprehension. As you keep your eyes fixated on this otherworldly creature, a boisterous voice booms from "
+          "all eight directions; 'It would seem that you have managed to escape from the cozy accomodation I have so generousely provided for you, Hero.' The last word being spat out "
+          "with venom, and if someone's tone of voice could kill, you would be very very dead right now. The voice continues with a raspy,sinister tambre : 'You must be tired after "
+          " making the long and arduous journey to my castle, here in *insert place here*. Perhaps I should ask John Lennon here to escort you back to your room.' The varmint growls "
+          "on hearing it's name. Something tells you that you might have to fight John Lenon if push comes to shove. The voice interrupts your trail of thought booming : 'I am very "
+          "intrested to see what you do next, Human. Let's see if you have a kernel of survival instinct. John Lennon here is a ", b1name, "and exists only to carry out my will. "
+          "He is my thrall, forever indentured to his Lord and master and will fall upon a sword should I give the command. The voice snarls,'If you have no further objections, let the Trial By "
+          " Sketchers begin ! Your objective for now is to climb the flight stairs. Your body is going to get up there anyway, but you will have a say in whether its you or your "
+          "mangled corpse that reaches the next floor. Will you able to overcome the first obstacle, or will you, like so many before you fall to the very first hurdle ?'"
+          "Your knees begin to buckle as the ", b1name, " stares you down. You've got to move, and fast .")
+
+    print ("""  A. Object because ... duh
+  B. Try and stall to understand the situation a bit better
+  C. Try to communicate with ... with uhh *rubs temples* ... John Lenon over here
+  D. Are you McFucking kidding me ?? RUN BOY RUN !
+  E. Banzai !!!
+  F. Check stats """)
+    choice = input(">>> ") 
+    if choice in answer_A:
+        mcnugget = 0
+        option_Ispeak()
+    elif choice in answer_B:
+        mcnugget = 1
+        option_Ispeak()
+    elif choice in answer_C:
+        mcnugget = 2
+        option_Ispeak()
+    elif choice in answer_D:
+        option_Coward()
+    elif choice in answer_E:
+        hat = 1
+        option_Banzai()
+    elif choice in answer_F:
+        print_Stat()
+    else:
+      print (required)
+
+def option_Ispeak():
+    global mcnugget
+    global hat
+
+    if(mcnugget == 0):
+        print("\n 'I object !' you yell, finally finding your voice amidst all this ruckus going on right in front of you. 'It would seem that you are not mute after all, peasant.' "
+              "echoes the voice. 'What do you object to ?' ")
+        print("Stat Check : Int(3)")
+        if(intRoll>3) :
+            mcnugget = 1
+        else :
+            print("You try your hardest to find the words to ask about the burning questions you have, but you are seemingly unable to do just that. You stand with your jaw hanging out "
+                  "for what seems to be a few milienia before the voice, apparently bored now, says 'Since you have nothing to say, let the Trial begin! Lenon, Hardzakum !' ")
+            print("The ",b1name,"readies itself, and suddenly lurches forward to attack you !")
+            hat = 0
+            option_Banzai()
+
+    if(mcnugget == 1):
+        print("\n 'Wait a moment !' you exclaim at the walls of your corridor. 'I have a whole bunch of questions for you, bucko', you continue, all the while scanning your surroundings,"
+              "trying to find any advantage that you can get if the ", b1name, " decides to attack you. 'What am I doing here ? Who are you ? What even is John Lenon ? Can I wash my "
+              "red and pink laundry in the same wash if I set it a slow speed ? And what in the name of the Kool Aid Man is this 'Trial of the Sketchers' ??' "
+              "You pause to catch your breath before contnuing your tirade, 'Did you know that kidnapping is a very serious offense ? You could get a jail term of upto fourteen years "
+              " for this stunt, ffff-friend.' your momentum finally coming to a halt, you cross your arms and put on your best stern face as you wait for a reply.")
+
+        print("The voice does not dissapoint: 'You will have answers to all of your questions and more, but only if you climb up the stairway. So, hero!  Whatever will you do next ?'"
+              "'So I just have to cross the stairs, yeah ?' you say, before taking a step forward. Before your foot is on the ground, you can hear a low growling noise eminating from"
+              "from John Lenon. You wisely decide to take a step back before you can hear the voice chuckle. 'Let's amp the difficulty of this  challenge, shall we ? Lenon, Hardzakum !'")
+        option_Banzai()
+        
+def option_Coward():
+
+    print("\n Nope Nope NOPE. This isn't what you signed up for at all considering that you didn't sign up for anything at all. You turn tail and attempt to flee back into the room you "
+          "were once held prisoner in. ")
+    print("Agility Check : 2 or 3 ")
+
+    if(agiRoll<b1agi):
+        print("As you show your back to the ",b1name,"it lunges straight at you, initially missing you by inches. You are not as lucky the second time however and as it's claws dig into"
+              " your skin, you realize that you may not have taken the best course of action. \n YOU DIED")
+    if(agiRoll>=b1agi):
+        print("You turn around and run with the grace of a gazzele as you rush back into your old holding cell, barring the door behind you. You slam the door behind you, and bar it "
+              "should try to break through. How ironic that what you once considered your prison is now the only thing standing between you and certain death. ")
+        print("The banging on your door eventually subsides until you can finally hear nothing from the outside world. Suddenly, you hear the voice again, 'I am dissapointed, Champion.' "
+              "It goes on, 'I thought you were more than a simpering craven but my assumptions were sadly incorrect.' The tone is almost sad now as it continues, 'Perhaps I will keep "
+              "you around as a pet when this sad affair is finally over. But I intenend for Lenon to have his fun.' You exhale sharply as you consider your next options. ")
+        
+        print ("""  A. Prepare yourself and move outside to face your foe, weapon in tow (Requires Weapon)
+  B. Prepare yourself and move outside, unarmed (Doing this will leave your weapon in the room)
+  C. Try to set a trap with whatever you can find in the room
+  D. Have a look at your stat build """)
+        choice = input(">>> ") #First choice.
+        if choice in answer_A:
+            hat = 2
+            option_Banzai()
+        elif choice in answer_B:
+            hat = 3
+            option_Negociate()
+        elif choice in answer_C:
+            option_trap()
+        elif choice in answer_D:
+            print_Stat()
+        else:
+            print (required)
+
+def option_banzai():
+    global hat
+    if(hat == 0):
+        print("You rush straight towards the ",b1name," and try to attack it while it's surprised by your initial brute charge. The tactic works for a time as John Lennon immideately "
+              "retreats, leaping backwards while still keeping his eyes on your movements. Suddenly, he lunges straight towards you with his claws drawn out and you.
+
+intro()
