@@ -1,0 +1,458 @@
+import random
+import time
+import sys
+from PIL import Image
+from colorama import *
+init()
+
+print(Fore.RED + '                                       Text-Based Choose Your Own Adventure Game                      ')
+
+#Calibrating User Response
+answer_A = ["A", "a"]
+answer_B = ["B", "b"]
+answer_C = ["C", "c"]
+answer_D = ["D", "d"]
+answer_E = ["E", "e"]
+yes = ["Y", "y", "yes"]
+no = ["N", "n", "no"]
+
+time.sleep(1)
+
+print(Fore.YELLOW + "                                                 Statistic Generator             ")
+time.sleep(1)
+print(Fore.WHITE + "\n We shall now set the stat points for the game. These points "
+      " are going to determine the actions that a player can physically "
+      "achieve. We would suggest taking actions based on the structure "
+      "of your stat build (i.e try to make actions which rely on stats "
+      " which you have an abundabce in). These points shall be set randomly, "
+      "but the player can have an option in a specific bonus in a partcicular"
+      " set of stats.")
+
+required = ("\n Please Use only the provided options \n")
+
+#print("\n Select your race : "
+ #     "1. Human (+1 across the board) \n"
+  #    "2. Elf (+2 intellect,+2 agility, +1 endurance) \n")
+#race =
+
+
+print(Fore.CYAN + "\n Select your class from the following : \n"
+      "1. Berserker (+3 Strength) \n"
+      "2. Legionnaire (+2 Strength, +1 Endurance) \n"
+      "3. Ranger (+2 Agility, +1 Strength) \n"
+      "4. Sage (+3 Intelligence) \n"
+      "5. Bard (+2 Charisma, +1 Agility) \n")
+classer = int(input("Enter your choice >>>"))
+
+if(classer ==1):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(4,6))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(1,1))
+
+elif (classer == 2):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(3,4))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(3,4))
+
+elif (classer == 3):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(2,3))
+    agiRoll = int(random.randint(4,6))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(1,2))
+
+elif (classer == 4):
+    intRoll = int(random.randint(3,4))
+    strRoll = int(random.randint(1,2))
+    agiRoll = int(random.randint(1,2))
+    chaRoll = int(random.randint(1,2))
+    endRoll = int(random.randint(1,2))
+
+elif(classer == 5):
+    intRoll = int(random.randint(1,2))
+    strRoll = int(random.randint(1,2))
+    agiRoll = int(random.randint(2,3))
+    chaRoll = int(random.randint(4,6))
+    endRoll = int(random.randint(1,2))
+       
+   
+
+        ####################################
+if(classer ==1):
+    strRoll = strRoll + 3
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 2):
+    strRoll = strRoll + 2
+    endRoll = endRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+   
+
+elif(classer == 3):
+    agiRoll = agiRoll + 2
+    strRoll = strRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 4):
+    intRoll = intRoll + 3
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+elif(classer == 5):
+    charRoll = chaRoll + 2
+    agiRoll = agiRoll + 1
+    print("\n The stat points for your character are : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+
+else:
+    print(required)
+    stat_gen()
+
+print("\n Now that we've set the statistic points, let's proceed with the story \n")
+
+def print_Stat():
+    print("\n You take a good look at yourself,realising that your stat build is : ")
+    print(" Strength : ", strRoll)
+    print(" Agility : ", agiRoll)
+    print(" Endurance : ",endRoll)
+    print(" Charisma : ", chaRoll)
+    print(" Intellect : ",intRoll)
+    print("\n")
+
+############################################
+def intro():
+  print (Fore.WHITE + "\n You wake up in a damp room, the air so thick that you "
+         "can tangibly feel it on your tongue. You get out of bed "
+         "groggily but suddenly feel the urge to vomit. You lurch "
+         "toward the thing that looks like a bucket and give in to "
+         "your nausea."
+         "'Where am I? What am I doing here?'"
+         "you mutter to yourself as you scan your little room for "
+         "any idea regarding your whereabouts. Interestingly enough, "
+         "the walls of your hove don't look like a normal flat; "
+         "they're completely uneven. Terrified, you come to the understanding that "
+         "you're in a God-forsaken cave. As you glance upwards, you "
+         "notice a chandelier that's holding a couple of high-voltage electric bulbs. "
+         "That is the only source of light in your little coven "
+         "but it seems more than enough to illuminate the entire "
+         "region. Finally, your attention falls towards what seems "
+         "to be your exit. Excited, you haul yourself up and walk "
+         "toward it only to observe a barred door standing steadfast "
+         "in front of your path. The tremendously strong structure has a keyhole smack dab in the middle of its rusty exterior. "
+         "As your shoulders slump in despair, you "
+         "see a little envelope with a bright red seal on the floor near the door. Sighing, you try "
+         "to break the seal but you find that you cannot.You realize that "
+         "you need to reach the contents of the letter but can't risk damaging"
+         "the letter, what do you do next ? dev note: Add room pics here \n")
+  time.sleep(1)
+  image1=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Tunnel time.jpg')
+  image1.show()
+  print (Fore.CYAN + """A. Search for a means to solve your little conundrum
+              B. Wait for someone to come and rescue you
+              C. Shout for help with everything you've got
+              D. Have a look at your stat build
+              E. Have another look at that hulking iron door""")
+  choice = input(">>> ") #First choice.
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Sleeze()
+  elif choice in answer_C:
+    option_Starscream()
+  elif choice in answer_D:
+      print_Stat()
+      intro()
+  elif choice in answer_E:
+    option_sinistro()
+  else:
+      print (required)
+      intro()
+ 
+   
+def option_Pencil():
+  print (Fore.WHITE + "\n You start searching for helpful things that could help you out of sorry situation. "
+         "After an extensive search of your surroundings, you find a set of matches, a little lamp  "
+         "some dental floss  in your little room. "
+         "What would you like to do next? \n")
+  image2=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Kerosene.jpg')
+  image2.show()
+  time.sleep(1)
+  print (Fore.CYAN + """  A. Try to tamper with the seal to access the contents of the envelope
+  B. Bang on the door for help """)
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_bernie()
+
+  elif choice in answer_B:
+    option_Starscream()
+
+  else:
+    print(required)
+    option_Pencil()
+   
+
+def option_Sleeze():
+  print(Fore.WHITE + "\n You are tired. There is a bed near you. Isn't it obvious what you should do? Let's take a little nap and think "
+        "about your stressful situation later. You try to sleep, but you just can't. A little message pops into your head "
+        " ||You can't sleep now, there are monsters nearby|| Wising up, you realise you have a minecraft addiction and ponder your next move. \n")
+  image3=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Priz.jpg')
+  image3.show()
+  time.sleep(1)
+
+  print (Fore.CYAN +""" A. Try to search for a way to bust your self out or maybe open that envelope you found
+             B. Bang at the door and shout, trying to get someones attention
+             C. Don't press C, Just DONT okay, I'm too lazy to rearrange the options
+             D. Inspect the door to see if you can break through
+             E. Check your stats """)
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Starscream()
+  elif choice in answer_C:
+    option_Sleeze()
+  elif choice in answer_D:
+      option_sinistro()
+  elif choice in answer_E:
+    print_Stat()
+    option_Sleeze()
+  else:
+      print (required)
+      option_Sleeze()
+
+def option_Starscream():
+  print(Fore.WHITE + "\n You bang on the door with everything you've got, shouting for help in all the languages you know "
+        " You can only hear the deafening sound of silence as well as your insecurities screaming at you for wearing your worst pair of pants you own. "
+        " What will your next move be ?: \n")
+  image4=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Bang.webp')
+  image4.show()
+  time.sleep(1)
+
+  print (Fore.CYAN + """ A. Try to search for a way to bust your self out or maybe open that envelope you found
+             B. Still try to get someone's attention from the outside by causing a racket
+             C. Lie on your bed in defeat,maybe someone will come and collect you later
+             D. Check your stats
+             E. Let's have a look at that big door, yeah? Maybe we can find something useful""")
+  choice = input(">>> ")
+  if choice in answer_A:
+    option_Pencil()
+  elif choice in answer_B:
+    option_Secondscream()
+  elif choice in answer_C:
+    option_Sleeze()
+  elif choice in answer_D:
+      print_Stat()
+      option_Starscream()
+  elif choice in answer_E:
+      option_sinistro()
+  else:
+      print (required)
+      option_Starscream()
+
+def option_sinistro():
+
+    print(Fore.WHITE + "\n As you observe the door, you realise that rather that it has an ornate lock with a golden keyhole on one of the sides. You probably need a key to "
+          "escape this room and embrace the warm sunlight of the outside world. Unless ... \n")
+    
+    image5=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Bang.webp')
+    image5.show()
+    time.sleep(1)
+
+    print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+               B. If you can't move around a wall, you've gotta push through it : Let's break the lock
+               C. Punching the lock into a battered shape sounds like a stressful idea. Maybe we can try to pick it instead
+               D. Check your stat build""")
+    choice = input(">>> ")
+    if choice in answer_A:
+        option_Pencil()
+    elif choice in answer_B:
+        option_breaker()
+    elif choice in answer_C:
+        option_smooth()
+    elif choice in answer_D:
+        print_Stat()
+        option_sinistro()
+
+def option_breaker():
+    print(Fore.GREEN +"Stat Check : Strength(6)")
+    time.sleep(1)
+
+    if(strRoll>=6):
+        print(Fore.WHITE + "\n You throw a couple of punches at the lock and are pleasantly surprised to see some leeway for your efforts. You take a deep breath before you pound at "
+              "your metallic gatekeeper, which slowly starts to give until eventually the contraption keeping you prisoner breaks, allowing you to access the surrounding "
+              "areas. At this point, you are sweating profusely, and have blisters on your hands. You step out of your cell and brace yourself for whatever's coming next. \n")
+        option_remy()
+
+    else:
+        print("\n You valiantly try to break the lock by punching, kicking and swearing at it. Your efforts are unrewarded; the lock stands firm. In despair, you throw your "
+              " bucket at it, but you might as well be trying to be trying to fill water in a sieve or insert some other corny idiom here. ")
+
+        print("\n After that disasterous attempt failed you decide that there's no point trying to continue in this direction anymore and you think on your next course of action: ")
+       
+        print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+                   B. You could always cry for help
+                   C. Maybe you can try to pick this lock instead
+                   D. Check your stat build""")
+        choice = input(">>> ")
+        if choice in answer_A:
+            option_Pencil()
+        elif choice in answer_B:
+            option_Starscream()
+        elif choice in answer_C:
+            option_smooth()
+        elif choice in answer_D:
+            print_Stat()
+            option_breaker()
+
+def option_smooth():
+    print("Stat Check: Intellect(6)")
+    if(intRoll>=6):
+        print(Fore.WHITE + "\n You remember seeing a thin screw jutting out from one of the legs of the bed. You squat down on your knees take a good look at it. It is long and has a flat tip, "
+              "and seems rather out of place in the whole structure of the bed. You take a deep breath and tug at it, bracing yourself for collapse of the whole structure but miraculously"
+              " the bed remains standing even after you've taken the screws out from one of it's legs. Your idiot brain then reminds you that there are three other legs that are keeping this "
+              "thing from collapsing on it's own weight. Sighing, you approach the door.")
+
+        print("\n The flat tip of the nail smoothly slides into the lock's orafice, very much unlike how you slide into girls' DMs. You then make lockpicking actions (Dev Note: I do not know how "
+              "to write this, this is kinda ssv's domain) and the lock makes a satisfying 'click' noise before you drop it onto the floor. You then push the door open and prepare yourself"
+              " for whatever's coming next. ")
+        option_remy()
+
+    else:
+        print("\n You scramble to find something to pick the lock with, but everything you find seems rather unsuitable for the task. You find a screw jutting out from underneath one of "
+              "the bed's legs that you could use, but spoiler alert: You can't; You're too dumb lol. You try to figure out what to do next. ")
+        print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+                   B. You could always cry for help
+                   C. Maybe you can try to bash the living baboons out of this mother flipping lock
+                   D. Check your stat build""")
+        choice = input(">>> ")
+        if choice in answer_A:
+            option_Pencil()
+        elif choice in answer_B:
+            option_Starscream()
+        elif choice in answer_C:
+            option_breaker()
+        elif choice in answer_D:
+            print_Stat()
+            option_smooth()
+
+def option_bernie():
+
+    print(Fore.WHITE + "\n You realise that you can try and remove the seal in two ways : You can burn until the wax drips off "
+          "or you could use the string to slowly cut the seal from the paper. You could always just kill time by "
+          "humming the Witcher theme but something tells you that probably isn't productive. That same thing is also "
+          "tells you that you are a moron of extraordinary proportions. It appears that you have some sense of rational thought"
+          " in that big pink blob between your ears. In any case, you gotta make a decision, chief. ")
+    time.sleep(1)
+
+    print (Fore.CYAN + """  A. Try to burn the seal to make the wax drip
+                B. Try to cut the seal from the envelope
+                C. Take a look at the door instead: Perhaps there are other ways to break out of here
+                D. Take a look at your stats""")
+    choice = input(">>> ")
+
+    if choice in answer_A:
+      option_goulding()
+ 
+    elif choice in answer_B:
+      option_kusanagi()
+
+    elif choice in answer_C:
+      option_sinistro()
+
+    elif choice in answer_D:
+        print_Stat()
+        option_bernie()
+
+    else:
+      print(required)
+      option_bernie()
+
+def option_Secondscream():
+
+    print(Fore.WHITE + "\n You peservere and continue to bang on the door, hoping that someone out there can hear your pleas for help and come and rescue"
+          " your sorry ass. But your efforts seem to fall on deaf ears (Much like all your requests for a lightsaber :( ). You realize that "
+          " you have to try a different approach. ")
+
+    print (Fore.CYAN + """ A. Try to search for a way to bust your self out or maybe open that envelope you found
+               B. Do not select B plz
+               C. Lie on your bed in defeat,maybe someone will come and collect you later
+               D. Check your stats
+               E. Let's have a look at that big door, yeah? Maybe we can find something useful""")
+    choice = input(">>> ")
+    if choice in answer_A:
+      option_Pencil()
+    elif choice in answer_B:
+      option_Secondscream()
+    elif choice in answer_C:
+      option_Sleeze()
+    elif choice in answer_D:
+        print_Stat()
+        option_Secondscream()
+    elif choice in answer_E:
+        option_sinistro()
+    else:
+        print (required)
+        option_Secondscream()
+
+def option_goulding():
+ 
+  print(Fore.WHITE + "\n You light a match and light the lamp you found. After doing that, you gently put the seal of the envelope under the "
+        " the flame of the lamp. Because you are a utter klutz, the entire envelope catches fire and before you knew it, you "
+        " dropped the envelope and the fire slowly dies down after consuming the letter inside the envelope in it's entirety. "
+        " As you wail in despair, you can see a glint coming from the ashes. You quickly try to reach the shiny object, only for the "
+        "hot ash to sting your hands as you try to touch your only hope. You learn from your mistake and blow at the ash, revealing a "
+        "well-adorned but slightly singed key. You shout with joy and plug the keyhole with the key you found and can now march your merry way into"
+        " freedom, or what I,the developer call the rest of your extremely large prison. ")
+  image6=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Lantern.jpg')
+  image6.show()
+  time.sleep(1)    
+        
+
+  #print("Path 1 Selected")
+  option_remy()
+
+def option_kusanagi():
+  print(Fore.WHITE + "\n You slowly cut your way through the seal, unceremoniously throwing it aside after you free the envelope from it's *EVIL* clutches "
+        "You uncover a piece of paper and a beautiful key. You attempt to read what's on the paper but it seems it was written in language you can't understand. "
+        " As 'We are the champions' by a certain Freddy M plays in your head after your relatively easy acomplishment, you make your way to the door, "
+        " which you unlock and not before murmuring 'No time for losers', you slowly make your way to what you guess is the outside world. ")
+  image7=Image.open(r'C:\Users\ssvaw\Pictures\Saved Pictures\Bang.webp')
+  image7.show()
+  time.sleep(1)
+ 
+  #print("Path 2 selected")
+  option_remy()
+
+####################
+def option_remy():
+    print("End of chapter 1; Start of chapter 2")
+
+intro()
